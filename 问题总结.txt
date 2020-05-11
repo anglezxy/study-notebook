@@ -1,0 +1,109 @@
+1、使用viser绘制图表时切换路由，图表不出现问题
+使用监听路由的方式来控制showChart的值，当路由离开的时候设置为false,当路由切换回来的时候设置为true,这样相当于重新渲染的图表
+
+2、图表自适应（根据用户缩放来展示）
+   triggerWindowResizeEvent() {
+        const event = document.createEvent("HTMLEvents");
+        event.initEvent("resize", true, true);
+        event.eventType = "message";
+        window.dispatchEvent(event);
+     }
+
+3、如何复用组件？
+
+4、filters: {
+
+}
+
+5、vuex与localstorage区别
+Vuex存的是状态，存储在内存里，localstorage是浏览器提供的接口，以文件形式存在本地
+vuex用于组件之间的传值（响应式的，刷新页面值丢失），localstorage用于页面之间传值（非响应式的，需要刷新页面才能更新）
+
+6、vue非父子组件之间传值问题？
+ 新建一个bus.js文件， 在这个文件里实例化一下vue；然后在组件A和组件B中分别引入这个bus.js文件，将事件监听和事件触发都挂到bus.js这个实例上，这样就可以实现全局的监听与触发了
+bus.js
+import Vue from 'vue'
+export default new Vue()
+组件A
+<script>
+  import Bus from './bus.js'
+  export default {
+    data () {
+      return {
+        name: ''
+      }
+    },
+    created() {
+      let _this = this
+      // 用$on监听事件并接受数据
+      Bus.$on('send', (data) => {
+        _this.name = data
+        console.log(data)
+      })
+    },
+  }
+</script>
+组件B
+<script>
+  import Bus from './bus.js'
+  export default {
+    data () {
+      return {
+        elValue: '我是B组件数据'
+      }
+    },
+    methods: {
+        // 发送数据
+      onClick() {
+        Bus.$emit('send', this.elValue)
+      }
+    }
+  }
+</script>
+
+7、ant-design中的select下了列表中如果不是动态渲染的下拉列表，绑定的key值要与动态绑定的值类型一样例如：
+entityTService.Status = 1  sta: [{val: 0,name:'无效'},{ val: 1,name:'有效'}],
+<a-select v-model="entityTService.Status" style="width: 100%">
+        <a-select-option v-for="i in sta"  :key="i.val">{{ i.name }}</a-select-option> 页面展示 有效
+      </a-select>
+<a-select v-model="entityTService.Status" style="width: 100%">
+        <a-select-option  key="0">无效</a-select-option>
+ 	<a-select-option  key="1">有效</a-select-option>   页面展示 1
+      </a-select>
+注释：这里的不动态绑定的key是字符串，要与entityTService.Status类型一致才能匹配成功
+
+8、如何把arr数组里嵌套的数组合并成一个数组，数组扁平化
+function fn (arr) {
+	let arr1 = [];
+	arr.forEach(val => {
+	if (val instanceof  Array) {
+		arr1 = arr1.contact(fn(val))
+	} else { arr1.push(val) }
+})
+	return arr1;
+}
+    let arr = [1,2,[3,4,5,[6,7,8],9],10,[11,12]];
+    let arr1 = arr.toString().split(',');
+    console.log(arr1,'aaaa')
+    let a = this.fn(arr)
+
+json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+json.replace(/\"/g, ""); 吧json中的“”去掉
+
+
+
+Echarts 设置map 中grid组件不生效，应该设置在geo里的left top right bottom
+词云图表 如果value相同的词不出现 设置sizeRange[12,50]
+
+echarts图表渲染一定要写在mount里面，使用this.$nextTick()
+
+
+运营平台        http://yunying.dev.simmed.cn  手机端
+合作商控制台  http://console.dev.simmed.cn
+信医统一入口   http://sma.dev.simmed.cn
+信医医疗服务-控制台  http://open.dev.simmed.cn
+信医监管平台     https://chain-monitor.simmed.cn
+信医链监管大屏   https://chain-screen.simmed.cn
+基础服务      http://sma.dev.simmed.cn/baseservice
+公用服务      http://sma.dev.simmed.cn/commonservice
+电子病历浏览器   http://emr.dev.simmed.cn
