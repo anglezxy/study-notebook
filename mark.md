@@ -150,7 +150,7 @@ const声明的常量必须初始化，而let声明的变量不用
   2. 函数是否通过call apply 或者应绑定调用，如果是，this绑定的是指定的对象
    var bar = foo.call(obj2)
   3.函数是否在某个上下文对象中调用（隐式绑定）？如果是的话，this绑定的是那个上下文对象。
-    var bar = obj1.foo();
+      var bar = obj1.foo();
 
     function foo(a,b) {
       console.log(a,b)
@@ -161,3 +161,153 @@ const声明的常量必须初始化，而let声明的变量不用
     bar(3) // a: 2,b:3
 
     ## Vue声明周期
+
+```
+ var vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Vue的生命周期'
+    },
+    beforeCreate: function() {
+      console.group('------beforeCreate创建前状态------');
+      console.log("%c%s", "color:red" , "el     : " + this.$el); //undefined
+      console.log("%c%s", "color:red","data   : " + this.$data); //undefined 
+      console.log("%c%s", "color:red","message: " + this.message) //undefined 
+    },
+    created: function() {
+      console.group('------created创建完毕状态------');
+      console.log("%c%s", "color:red","el     : " + this.$el); //undefined
+      console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化 
+      console.log("%c%s", "color:red","message: " + this.message); //已被初始化
+    },
+    beforeMount: function() {
+      console.group('------beforeMount挂载前状态------');
+      console.log("%c%s", "color:red","el     : " + (this.$el)); //已被初始化
+      console.log(this.$el);
+      console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化  
+      console.log("%c%s", "color:red","message: " + this.message); //已被初始化  
+    },
+    mounted: function() {
+      console.group('------mounted 挂载结束状态------');
+      console.log("%c%s", "color:red","el     : " + this.$el); //已被初始化
+      console.log(this.$el);    
+      console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
+      console.log("%c%s", "color:red","message: " + this.message); //已被初始化 
+    },
+    beforeUpdate: function () {
+      console.group('beforeUpdate 更新前状态===============》');
+      console.log("%c%s", "color:red","el     : " + this.$el);
+      console.log(this.$el);   
+      console.log("%c%s", "color:red","data   : " + this.$data); 
+      console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    updated: function () {
+      console.group('updated 更新完成状态===============》');
+      console.log("%c%s", "color:red","el     : " + this.$el);
+      console.log(this.$el); 
+      console.log("%c%s", "color:red","data   : " + this.$data); 
+      console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    beforeDestroy: function () {
+      console.group('beforeDestroy 销毁前状态===============》');
+      console.log("%c%s", "color:red","el     : " + this.$el);
+      console.log(this.$el);    
+      console.log("%c%s", "color:red","data   : " + this.$data); 
+      console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    destroyed: function () {
+      console.group('destroyed 销毁完成状态===============》');
+      console.log("%c%s", "color:red","el     : " + this.$el);
+      console.log(this.$el);  
+      console.log("%c%s", "color:red","data   : " + this.$data); 
+      console.log("%c%s", "color:red","message: " + this.message)
+    }
+  })
+</script>
+```
+
+==beforeCreate==  el，data 实例还没有创建,created el未创建 data初始化完成
+
+==beforeMounted== 和mounted el 初始化完成
+
+==beforeUpdate== 检测到数据变化，并未更新视图
+
+==updated== 视图重新渲染完成
+
+==activated== 被 keep-alive 缓存的组件激活时调用。
+
+==deactivated== 被 keep-alive 缓存的组件停用时调用。
+
+==beforeDestroy== 实例销毁之前调用。在这一步，实例仍然完全可用。
+
+==destroyed==  实例销毁后调用。该钩子被调用后，对应 Vue 实例的所有指令都被解绑，所有的事件监听器被移除，所有的子实例也都被销毁。
+
+## Vue指令
+
+v-text  v-html v-show v-if v-for v-model v-slot v-bind v-on v-pre v-else v-cloak v-once
+
+==v-cloak== 这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如 `[v-cloak] { display: none }` 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。
+
+==key==的特殊属性主要用在Vue的虚拟DOM算法，在新旧nodes对比时辨识VNodes.如果不适用key,Vue会使用一种最大限度减少动态原色并尽可能的尝试的修改、复用相同类型元素的算法。使用key，他会基于key的变化重新排列元素顺序，并且会移除key不存在的元素。
+
+## 数据双向绑定原理
+
+## 事件修饰符
+
+.stop  .prevent .capture .self .once .passive
+
+## 自定义指令
+
+## 钩子函数
+
+## 导航钩子
+
+## Vuex
+
+## vue几种方式传值
+
+1、路由传参 2、prop  3、emit事件传参  3、Vuex
+
+## Vue项目有哪些优化
+
+1、路由懒加载 2、图片懒加载 、3 webpack 热更新 4、合理使用v-if v-show 5、图片进行压缩
+
+## echarts 渲染为啥在mounted里做
+
+## 一个点击事件可以绑定多个方法吗？（可以的）
+
+## 数据和页面不一起出来怎么解决？
+
+## Vue 中key作用
+
+## bind call apply区别
+
+## 解释一下防抖和节流
+
+## ios中button 点击响应慢怎么办？（使用better-click）
+
+## flex属性和用途
+
+- flex-direction 排列方向
+- flex-wrap  换行
+- flex-flow
+- justify-content 对齐方式
+- align-items  属性定义项目在交叉轴上如何对齐
+- align-content 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+
+## 如何使用css3写出fontSize: 10px的字体
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
-1¡¢Ê¹ÓÃviser»æÖÆÍ¼±íÊ±ÇĞ»»Â·ÓÉ£¬Í¼±í²»³öÏÖÎÊÌâ
-Ê¹ÓÃ¼àÌıÂ·ÓÉµÄ·½Ê½À´¿ØÖÆshowChartµÄÖµ£¬µ±Â·ÓÉÀë¿ªµÄÊ±ºòÉèÖÃÎªfalse,µ±Â·ÓÉÇĞ»»»ØÀ´µÄÊ±ºòÉèÖÃÎªtrue,ÕâÑùÏàµ±ÓÚÖØĞÂäÖÈ¾µÄÍ¼±í
+1ã€ä½¿ç”¨viserç»˜åˆ¶å›¾è¡¨æ—¶åˆ‡æ¢è·¯ç”±ï¼Œå›¾è¡¨ä¸å‡ºç°é—®é¢˜
+ä½¿ç”¨ç›‘å¬è·¯ç”±çš„æ–¹å¼æ¥æ§åˆ¶showChartçš„å€¼ï¼Œå½“è·¯ç”±ç¦»å¼€çš„æ—¶å€™è®¾ç½®ä¸ºfalse,å½“è·¯ç”±åˆ‡æ¢å›æ¥çš„æ—¶å€™è®¾ç½®ä¸ºtrue,è¿™æ ·ç›¸å½“äºé‡æ–°æ¸²æŸ“çš„å›¾è¡¨
 
-2¡¢Í¼±í×ÔÊÊÓ¦£¨¸ù¾İÓÃ»§Ëõ·ÅÀ´Õ¹Ê¾£©
+2ã€å›¾è¡¨è‡ªé€‚åº”ï¼ˆæ ¹æ®ç”¨æˆ·ç¼©æ”¾æ¥å±•ç¤ºï¼‰
    triggerWindowResizeEvent() {
         const event = document.createEvent("HTMLEvents");
         event.initEvent("resize", true, true);
@@ -9,22 +9,22 @@
         window.dispatchEvent(event);
      }
 
-3¡¢ÈçºÎ¸´ÓÃ×é¼ş£¿
+3ã€å¦‚ä½•å¤ç”¨ç»„ä»¶ï¼Ÿ
 
-4¡¢filters: {
+4ã€filters: {
 
 }
 
-5¡¢vuexÓëlocalstorageÇø±ğ
-Vuex´æµÄÊÇ×´Ì¬£¬´æ´¢ÔÚÄÚ´æÀï£¬localstorageÊÇä¯ÀÀÆ÷Ìá¹©µÄ½Ó¿Ú£¬ÒÔÎÄ¼şĞÎÊ½´æÔÚ±¾µØ
-vuexÓÃÓÚ×é¼şÖ®¼äµÄ´«Öµ£¨ÏìÓ¦Ê½µÄ£¬Ë¢ĞÂÒ³ÃæÖµ¶ªÊ§£©£¬localstorageÓÃÓÚÒ³ÃæÖ®¼ä´«Öµ£¨·ÇÏìÓ¦Ê½µÄ£¬ĞèÒªË¢ĞÂÒ³Ãæ²ÅÄÜ¸üĞÂ£©
+5ã€vuexä¸localstorageåŒºåˆ«
+Vuexå­˜çš„æ˜¯çŠ¶æ€ï¼Œå­˜å‚¨åœ¨å†…å­˜é‡Œï¼Œlocalstorageæ˜¯æµè§ˆå™¨æä¾›çš„æ¥å£ï¼Œä»¥æ–‡ä»¶å½¢å¼å­˜åœ¨æœ¬åœ°
+vuexç”¨äºç»„ä»¶ä¹‹é—´çš„ä¼ å€¼ï¼ˆå“åº”å¼çš„ï¼Œåˆ·æ–°é¡µé¢å€¼ä¸¢å¤±ï¼‰ï¼Œlocalstorageç”¨äºé¡µé¢ä¹‹é—´ä¼ å€¼ï¼ˆéå“åº”å¼çš„ï¼Œéœ€è¦åˆ·æ–°é¡µé¢æ‰èƒ½æ›´æ–°ï¼‰
 
-6¡¢vue·Ç¸¸×Ó×é¼şÖ®¼ä´«ÖµÎÊÌâ£¿
- ĞÂ½¨Ò»¸öbus.jsÎÄ¼ş£¬ ÔÚÕâ¸öÎÄ¼şÀïÊµÀı»¯Ò»ÏÂvue£»È»ºóÔÚ×é¼şAºÍ×é¼şBÖĞ·Ö±ğÒıÈëÕâ¸öbus.jsÎÄ¼ş£¬½«ÊÂ¼ş¼àÌıºÍÊÂ¼ş´¥·¢¶¼¹Òµ½bus.jsÕâ¸öÊµÀıÉÏ£¬ÕâÑù¾Í¿ÉÒÔÊµÏÖÈ«¾ÖµÄ¼àÌıÓë´¥·¢ÁË
+6ã€vueéçˆ¶å­ç»„ä»¶ä¹‹é—´ä¼ å€¼é—®é¢˜ï¼Ÿ
+ æ–°å»ºä¸€ä¸ªbus.jsæ–‡ä»¶ï¼Œ åœ¨è¿™ä¸ªæ–‡ä»¶é‡Œå®ä¾‹åŒ–ä¸€ä¸‹vueï¼›ç„¶ååœ¨ç»„ä»¶Aå’Œç»„ä»¶Bä¸­åˆ†åˆ«å¼•å…¥è¿™ä¸ªbus.jsæ–‡ä»¶ï¼Œå°†äº‹ä»¶ç›‘å¬å’Œäº‹ä»¶è§¦å‘éƒ½æŒ‚åˆ°bus.jsè¿™ä¸ªå®ä¾‹ä¸Šï¼Œè¿™æ ·å°±å¯ä»¥å®ç°å…¨å±€çš„ç›‘å¬ä¸è§¦å‘äº†
 bus.js
 import Vue from 'vue'
 export default new Vue()
-×é¼şA
+ç»„ä»¶A
 <script>
   import Bus from './bus.js'
   export default {
@@ -35,7 +35,7 @@ export default new Vue()
     },
     created() {
       let _this = this
-      // ÓÃ$on¼àÌıÊÂ¼ş²¢½ÓÊÜÊı¾İ
+      // ç”¨$onç›‘å¬äº‹ä»¶å¹¶æ¥å—æ•°æ®
       Bus.$on('send', (data) => {
         _this.name = data
         console.log(data)
@@ -43,17 +43,17 @@ export default new Vue()
     },
   }
 </script>
-×é¼şB
+ç»„ä»¶B
 <script>
   import Bus from './bus.js'
   export default {
     data () {
       return {
-        elValue: 'ÎÒÊÇB×é¼şÊı¾İ'
+        elValue: 'æˆ‘æ˜¯Bç»„ä»¶æ•°æ®'
       }
     },
     methods: {
-        // ·¢ËÍÊı¾İ
+        // å‘é€æ•°æ®
       onClick() {
         Bus.$emit('send', this.elValue)
       }
@@ -61,18 +61,18 @@ export default new Vue()
   }
 </script>
 
-7¡¢ant-designÖĞµÄselectÏÂÁËÁĞ±íÖĞÈç¹û²»ÊÇ¶¯Ì¬äÖÈ¾µÄÏÂÀ­ÁĞ±í£¬°ó¶¨µÄkeyÖµÒªÓë¶¯Ì¬°ó¶¨µÄÖµÀàĞÍÒ»ÑùÀıÈç£º
-entityTService.Status = 1  sta: [{val: 0,name:'ÎŞĞ§'},{ val: 1,name:'ÓĞĞ§'}],
+7ã€ant-designä¸­çš„selectä¸‹äº†åˆ—è¡¨ä¸­å¦‚æœä¸æ˜¯åŠ¨æ€æ¸²æŸ“çš„ä¸‹æ‹‰åˆ—è¡¨ï¼Œç»‘å®šçš„keyå€¼è¦ä¸åŠ¨æ€ç»‘å®šçš„å€¼ç±»å‹ä¸€æ ·ä¾‹å¦‚ï¼š
+entityTService.Status = 1  sta: [{val: 0,name:'æ— æ•ˆ'},{ val: 1,name:'æœ‰æ•ˆ'}],
 <a-select v-model="entityTService.Status" style="width: 100%">
-        <a-select-option v-for="i in sta"  :key="i.val">{{ i.name }}</a-select-option> Ò³ÃæÕ¹Ê¾ ÓĞĞ§
+        <a-select-option v-for="i in sta"  :key="i.val">{{ i.name }}</a-select-option> é¡µé¢å±•ç¤º æœ‰æ•ˆ
       </a-select>
 <a-select v-model="entityTService.Status" style="width: 100%">
-        <a-select-option  key="0">ÎŞĞ§</a-select-option>
- 	<a-select-option  key="1">ÓĞĞ§</a-select-option>   Ò³ÃæÕ¹Ê¾ 1
+        <a-select-option  key="0">æ— æ•ˆ</a-select-option>
+ 	<a-select-option  key="1">æœ‰æ•ˆ</a-select-option>   é¡µé¢å±•ç¤º 1
       </a-select>
-×¢ÊÍ£ºÕâÀïµÄ²»¶¯Ì¬°ó¶¨µÄkeyÊÇ×Ö·û´®£¬ÒªÓëentityTService.StatusÀàĞÍÒ»ÖÂ²ÅÄÜÆ¥Åä³É¹¦
+æ³¨é‡Šï¼šè¿™é‡Œçš„ä¸åŠ¨æ€ç»‘å®šçš„keyæ˜¯å­—ç¬¦ä¸²ï¼Œè¦ä¸entityTService.Statusç±»å‹ä¸€è‡´æ‰èƒ½åŒ¹é…æˆåŠŸ
 
-8¡¢ÈçºÎ°ÑarrÊı×éÀïÇ¶Ì×µÄÊı×éºÏ²¢³ÉÒ»¸öÊı×é£¬Êı×é±âÆ½»¯
+8ã€å¦‚ä½•æŠŠarræ•°ç»„é‡ŒåµŒå¥—çš„æ•°ç»„åˆå¹¶æˆä¸€ä¸ªæ•°ç»„ï¼Œæ•°ç»„æ‰å¹³åŒ–
 function fn (arr) {
 	let arr1 = [];
 	arr.forEach(val => {
@@ -88,22 +88,22 @@ function fn (arr) {
     let a = this.fn(arr)
 
 json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-json.replace(/\"/g, ""); °ÉjsonÖĞµÄ¡°¡±È¥µô
+json.replace(/\"/g, ""); å§jsonä¸­çš„â€œâ€å»æ‰
 
 
 
-Echarts ÉèÖÃmap ÖĞgrid×é¼ş²»ÉúĞ§£¬Ó¦¸ÃÉèÖÃÔÚgeoÀïµÄleft top right bottom
-´ÊÔÆÍ¼±í Èç¹ûvalueÏàÍ¬µÄ´Ê²»³öÏÖ ÉèÖÃsizeRange[12,50]
+Echarts è®¾ç½®map ä¸­gridç»„ä»¶ä¸ç”Ÿæ•ˆï¼Œåº”è¯¥è®¾ç½®åœ¨geoé‡Œçš„left top right bottom
+è¯äº‘å›¾è¡¨ å¦‚æœvalueç›¸åŒçš„è¯ä¸å‡ºç° è®¾ç½®sizeRange[12,50]
 
-echartsÍ¼±íäÖÈ¾Ò»¶¨ÒªĞ´ÔÚmountÀïÃæ£¬Ê¹ÓÃthis.$nextTick()
+echartså›¾è¡¨æ¸²æŸ“ä¸€å®šè¦å†™åœ¨mounté‡Œé¢ï¼Œä½¿ç”¨this.$nextTick()
 
 
-ÔËÓªÆ½Ì¨        http://yunying.dev.simmed.cn  ÊÖ»ú¶Ë
-ºÏ×÷ÉÌ¿ØÖÆÌ¨  http://console.dev.simmed.cn
-ĞÅÒ½Í³Ò»Èë¿Ú   http://sma.dev.simmed.cn
-ĞÅÒ½Ò½ÁÆ·şÎñ-¿ØÖÆÌ¨  http://open.dev.simmed.cn
-ĞÅÒ½¼à¹ÜÆ½Ì¨     https://chain-monitor.simmed.cn
-ĞÅÒ½Á´¼à¹Ü´óÆÁ   https://chain-screen.simmed.cn
-»ù´¡·şÎñ      http://sma.dev.simmed.cn/baseservice
-¹«ÓÃ·şÎñ      http://sma.dev.simmed.cn/commonservice
-µç×Ó²¡Àúä¯ÀÀÆ÷   http://emr.dev.simmed.cn
+è¿è¥å¹³å°        http://yunying.dev.simmed.cn  æ‰‹æœºç«¯
+åˆä½œå•†æ§åˆ¶å°  http://console.dev.simmed.cn
+ä¿¡åŒ»ç»Ÿä¸€å…¥å£   http://sma.dev.simmed.cn
+ä¿¡åŒ»åŒ»ç–—æœåŠ¡-æ§åˆ¶å°  http://open.dev.simmed.cn
+ä¿¡åŒ»ç›‘ç®¡å¹³å°     https://chain-monitor.simmed.cn
+ä¿¡åŒ»é“¾ç›‘ç®¡å¤§å±   https://chain-screen.simmed.cn
+åŸºç¡€æœåŠ¡      http://sma.dev.simmed.cn/baseservice
+å…¬ç”¨æœåŠ¡      http://sma.dev.simmed.cn/commonservice
+ç”µå­ç—…å†æµè§ˆå™¨   http://emr.dev.simmed.cn
