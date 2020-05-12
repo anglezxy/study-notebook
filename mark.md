@@ -160,7 +160,7 @@ const声明的常量必须初始化，而let声明的变量不用
     var bar = foo.bind(null,2)
     bar(3) // a: 2,b:3
 
-    ## Vue声明周期
+    ## Vue生命周期
 
 ```
  var vm = new Vue({
@@ -252,6 +252,8 @@ v-text  v-html v-show v-if v-for v-model v-slot v-bind v-on v-pre v-else v-cloak
 
 ## 数据双向绑定原理
 
+![image-20200512110244446](C:\Users\simmed\AppData\Roaming\Typora\typora-user-images\image-20200512110244446.png)
+
 ## 事件修饰符
 
 .stop  .prevent .capture .self .once .passive
@@ -281,6 +283,10 @@ v-text  v-html v-show v-if v-for v-model v-slot v-bind v-on v-pre v-else v-cloak
 ## Vue 中key作用
 
 ## bind call apply区别
+
+> 参数、绑定规则（显示绑定和强绑定），运行效率（最终都会转换成一个一个的参数去运行）、运行情况（`call`，`apply` 立即执行，`bind` 是`return` 出一个 `this` “固定”的函数，这也是为什么 `bind` 是强绑定的一个原因）
+
+> 注：“固定”这个词的含义，它指的固定是指只要传进去了 `context`，则 `bind` 中 `return` 出来的函数 `this` 便一直指向 `context`，除非 `context` 是个变量
 
 ## 解释一下防抖和节流
 
