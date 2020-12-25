@@ -1,0 +1,95 @@
+const t = require('terser-webpack-plugin')
+module.exports = {
+    // 解析模块的规则
+    resolve: {
+        alias: {
+            $css: resolve(__dirname,'src/css')
+        },
+        // 配置省略文件路径的后缀名
+        extensions: ['.js','.json','.jsx','.css'],
+        // 告诉webpack解析模块去那个目录
+        modules:[resolve(__dirname,'../../node_modules'),'node_modules']
+    },
+    devServer: {
+        // 运行代码的目录
+        contentBase: resolve(__dirname,'build'),
+        // 监视contentBase目录下的所有文件，一旦文件变化就会reload
+        watchContentBase: true,
+        watchOptions: {
+            // 忽略文件
+            ignored: /node_modules/
+        },
+        // 启动gizp压缩
+        compress: true,
+        port: 5000,
+        host: 'localhost',
+        // 自动运行在浏览器
+        open: true,
+        // 开启hmr功能
+        hot: true,
+        // 不要显示启动服务器日志信息
+        clientLogLevel: 'none',
+        // 除了一些基本启动信息外，其他内容都不要显示
+        quiet: true,
+        // 出错了不要全屏提示
+        overlay: false,
+        // 服务器代理 -》解决开发环境跨域问题
+        proxy: {
+            // devServe(5000)服务器接收到 /api/xx请求，就会吧请求转发到另外一个服务器（3000）
+            '/api': {
+                target: 'http://localhost:8080',
+                // 发送请求时，请求路径重写
+                // 将/api/xxx -> xxx (去掉/api)
+                pathRewrite: {
+                    '^/api': ''
+                }
+            }
+        }
+    },
+    // 生产环境中配置，开发环境不用设置
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            minSize: 30 * 1024, // 分割的chunk最小为30KB
+            maxSize: 0,// 没有限制
+            minChunks: 1,// 要提取的chunk最少被引用一次
+            maxAsyncRequests: 5, // 按需加载时冰箱加载的文件的最大数量
+            maxInitialRequests: 3,// 入口js文件最大并行请求数量
+            automaticNameDelimiter: '~', // 名称连接符
+            name: true, // 可以使用命名规则
+            cacheGroups: {
+                // 分割chunk组
+                // node_modules文件会被打包到vendors租的chunk中
+                // 满足上面的公共规则
+                vendors: {
+                    test:/[\\/]node_modules[\\/]/,
+                
+                    priority:-10 // 优先级
+                },
+                default: {
+                    // 要提取的chunk最少被引用2次
+                    minChunks: 2,
+                    priority:-20 ,// 优先级
+                    // 如果当前要打包的模块和之前已经提前的模块为同一个，就不重复打包，直接复用
+                    reuseExistingChunk: true
+                }
+            }
+        }
+    },
+    // 将当前模块记录其他模块的hash单独打包为一个文件runtime
+    // 解决：修改a文件导致b文件的contenthash变化
+    runtimeChunk: {
+        name: entrypoint => `runtime -${entrypoint.name}`
+    },
+    minimizer: [
+        // 配置生产环境的压缩方案: js css
+        new t({
+            //开启缓存
+            cache: true,
+            // 开启多进程打包
+            parallel: true,
+            // 启动sourceMap
+            sourceMap: true,
+        })
+    }
+}
