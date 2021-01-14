@@ -1,20 +1,22 @@
-class Promise{
-			constructor(executor) {
-				const self = this;
-				this.PromiseStatus = 'pending'
-				this.PromiseResult = null;
-				this.callbacks = []
-				function resolve(data) {
-					if (self.PromiseStatus !=='pending') return
-						self.PromiseStatus = 'fulfilled'
-						self.PromiseResult = data
-						setTimeout(() => {
-								self.callbacks.forEach(item => {
-											item.onResolved(data)
-									 })
-							})
 
-					}
+class Promise{
+
+	constructor(executor) {
+		const self = this;
+		this.PromiseStatus = 'pending'
+		this.PromiseResult = null;
+		this.callbacks = []
+		function resolve(data) {
+		if (self.PromiseStatus !=='pending') return
+			self.PromiseStatus = 'fulfilled'
+			self.PromiseResult = data
+			setTimeout(() => {
+				self.callbacks.forEach(item => {
+					item.onResolved(data)
+				})
+			})
+
+	}
         function reject(data) {
             if (self.PromiseStatus !=='pending') return
             self.PromiseStatus = 'rejected'
