@@ -316,38 +316,44 @@ Vue项目中遇到视图不更新，方法不执行
 查看代码运行到那个阶段未之行结束
 
 前端性能优化：
+
 1、减少请求资源大小和请求次数：
-合并压缩css和js文件
-尽量使用字体图标和svg图标来代替png图片
-采用图片懒加载
-使用雪碧图，将所有相对较小的图片合在一张大图上
+
+	合并压缩css和js文件
+	尽量使用字体图标和svg图标来代替png图片
+	采用图片懒加载
+	使用雪碧图，将所有相对较小的图片合在一张大图上
 2、代码层面上：
-减少dom操作
-减少闭包的使用（闭包所在的上下文会被释放）
+	减少dom操作
+	减少闭包的使用（闭包所在的上下文会被释放）
 
 原型：
-构造函数是一种特殊的方法，主要用来在创建对象时初始化对象。每个构造函数都有prototype(原型)属性
-这个prototype(原型)属性是一个指针，指向一个对象，这个对象的用途是包含特定类型的所有实例共享的
-属性和方法，即这个原型对象是用来给实例对象共享属性和方法的。每个实例对象的__proto__都指向这个
-构造函数/类的prototype属性。
+	构造函数是一种特殊的方法，主要用来在创建对象时初始化对象。每个构造函数都有prototype(原型)属性
+	这个prototype(原型)属性是一个指针，指向一个对象，这个对象的用途是包含特定类型的所有实例共享的
+	属性和方法，即这个原型对象是用来给实例对象共享属性和方法的。每个实例对象的__proto__都指向这个
+	构造函数/类的prototype属性。
 
 面向对象的三大特性：继承/多态/封装
 
 原型链：
+
 每个对象都可以有一个原型_proto_，这个原型还可以有它自己的原型，当我们查找特定属性的时候，我们先去这个对象里去找，如果没有的话就去它的原型对象里面去。。。层层往上寻找就形成了原型链
 
 闭包：
+
 函数和函数内部能访问到的局部变量的组合叫闭包
 函数嵌套函数就是因为需要一个局部变量
 需要return出来这个函数是因为方便访问到这个函数
 闭包是一个可以访问外部作用域的内部函数，即使这个外部作用域已经执行结束。
 
 sass和less的区别
+
 定义变量的符号不同，less是用@，sass使用$
 变量的作用域不同，less在全局定义，就作用在全局，在代码块中定义，就作用于整哥代码块。而sass只作用域全局。
 编译环境不同，less在开发者环境编译，sass在服务器环境下编译。
 
 前端工程化和模块化
+
 工程化：将前端项目当成一个工程化系统去分析、组织和构建从而达到项目结构清晰、分工明确，团队配合默契、提高开发效率的目的
 模块化：一个模块就是实现一个功能的文件，有了模块我们就更容易的使用别人的代码，需要什么功能就加载什么模块
 js模块化有AMD（RequireJS异步）、commonJS（同步）、ES6Module,css模块化有less、sass
@@ -355,22 +361,25 @@ js模块化有AMD（RequireJS异步）、commonJS（同步）、ES6Module,css模
 
 
 箭头函数和普通函数this指向不同
-箭头函数：this代表的是继承上层对象，如果没有上层对象，则代表的是widow
-普通函数：this代表的是当前对象
+
+	箭头函数：this代表的是继承上层对象，如果没有上层对象，则代表的是widow
+	普通函数：this代表的是当前对象
 
 严格模式和非严格模式（use strict）
-1、所有变量必须要声明
-2、delete后跟着非法标识符会报错
-3、禁止使用with语句
-4、函数中声明同参数名会报错
-5、对象中声明同属性名会报错
-6、eval和arguments当作关键字，并且不允许修改
+
+	1、所有变量必须要声明
+	2、delete后跟着非法标识符会报错
+	3、禁止使用with语句
+	4、函数中声明同参数名会报错
+	5、对象中声明同属性名会报错
+	6、eval和arguments当作关键字，并且不允许修改
 
 跨域问题解决方案
+
 同源策略原因，域名不同、端口不同、协议不同
-1、jsonp：动态创建script标签，将要请求数据的域写在src中，后面参数附带回调方法
-服务器端货获取到回调函数的参数，返回数据
-2、CORS：服务器端设置响应头来指定哪些域可以访问本域下的数据
+	1、jsonp：动态创建script标签，将要请求数据的域写在src中，后面参数附带回调方法
+	服务器端货获取到回调函数的参数，返回数据
+	2、CORS：服务器端设置响应头来指定哪些域可以访问本域下的数据
 
 ES6
 let、const、var有什么区别
@@ -397,19 +406,18 @@ promise
 解决异步处理的方法
 两个特点：
 1、Promise对象的状态不受外界影响
-pending 初始状态、fulfilled 成功状态、rejected 失败状态
-Promise 有以上三种状态，只有异步操作的结果可以决定当前是哪一种状态，其他任何操作都无法改变这个状态
+	pending 初始状态、fulfilled 成功状态、rejected 失败状态
+	Promise 有以上三种状态，只有异步操作的结果可以决定当前是哪一种状态，其他任何操作都无法改变这个状态
 2、Promise的状态一旦改变，就不会再变，任何时候都可以得到这个结果，状态不可以逆
-只能由 pending变成fulfilled或者由pending变成rejected
-const promise = new Promise(function(resolve, reject) {
-      if (/* 异步操作成功 */){
-        resolve(value);
-      } else {
-        reject(error);
-      }
-  });
-
-
+	只能由 pending变成fulfilled或者由pending变成rejected
+	const promise = new Promise(function(resolve, reject) {
+	      if (/* 异步操作成功 */){
+		resolve(value);
+	      } else {
+		reject(error);
+	      }
+	  });
+	  
 http缓存机制
 浏览器会查看是否已有缓存数据，如果没有缓存数据，向服务器发起请求，服务器返回数据给浏览器，浏览器存储缓存数据
 缓存类型分为强缓存和协商缓存
@@ -467,14 +475,15 @@ webpack是一个预编译模块方案，它会分析你的项目结构将其打�
 }
 
 loader:
-file-loader：把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件
-url-loader：和 file-loader 类似，但是能在文件很小的情况下以 base64 的方式把文件内容注入到代码中去
-source-map-loader：加载额外的 Source Map 文件，以方便断点调试
-image-loader：加载并且压缩图片文件
-babel-loader：把 ES6 转换成 ES5
-css-loader：加载 CSS，支持模块化、压缩、文件导入等特性
-style-loader：把 CSS 代码注入到 JavaScript 中，通过 DOM 操作去加载 CSS。
-eslint-loader：通过 ESLint 检查 JavaScript 代码
+
+	file-loader：把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件
+	url-loader：和 file-loader 类似，但是能在文件很小的情况下以 base64 的方式把文件内容注入到代码中去
+	source-map-loader：加载额外的 Source Map 文件，以方便断点调试
+	image-loader：加载并且压缩图片文件
+	babel-loader：把 ES6 转换成 ES5
+	css-loader：加载 CSS，支持模块化、压缩、文件导入等特性
+	style-loader：把 CSS 代码注入到 JavaScript 中，通过 DOM 操作去加载 CSS。
+	eslint-loader：通过 ESLint 检查 JavaScript 代码
 
 
 forEach()和map()的区别
@@ -484,53 +493,58 @@ map有返回值 可以return出来
 
 网页从输入网址到渲染完成经历了哪些过程？
 输入网址；
-发送到DNS服务器，并获取域名对应的web服务器对应的ip地址；
-与web服务器建立TCP连接；
-浏览器向web服务器发送http请求；
-web服务器响应请求，并返回指定url的数据（或错误信息，或重定向的新的url地址）；
-浏览器下载web服务器返回的数据及解析html源文件；
-生成DOM树，解析css和js，渲染页面，直至显示完成；
 
-建立TCP连接->发送请求行->发送请求头->（到达服务器）发送状态行->发送响应头->发送响应数据->断TCP连接
+	发送到DNS服务器，并获取域名对应的web服务器对应的ip地址；
+	与web服务器建立TCP连接；
+	浏览器向web服务器发送http请求；
+	web服务器响应请求，并返回指定url的数据（或错误信息，或重定向的新的url地址）；
+	浏览器下载web服务器返回的数据及解析html源文件；
+	生成DOM树，解析css和js，渲染页面，直至显示完成；
+	建立TCP连接->发送请求行->发送请求头->（到达服务器）发送状态行->发送响应头->发送响应数据->断TCP连接
 
 http请求方法
-GET： 用于请求访问已经被URI（统一资源标识符）识别的资源，可以通过URL传参给服务器
-POST：用于传输信息给服务器，主要功能与GET方法类似，但一般推荐使用POST方式。
-PUT： 传输文件，报文主体中包含文件内容，保存到对应URI位置。
-HEAD： 获得报文首部，与GET方法类似，只是不返回报文主体，一般用于验证URI是否有效。
-DELETE：删除文件，与PUT方法相反，删除对应URI位置的文件。
-OPTIONS：查询相应URI支持的HTTP方法。
+
+	GET： 用于请求访问已经被URI（统一资源标识符）识别的资源，可以通过URL传参给服务器
+	POST：用于传输信息给服务器，主要功能与GET方法类似，但一般推荐使用POST方式。
+	PUT： 传输文件，报文主体中包含文件内容，保存到对应URI位置。
+	HEAD： 获得报文首部，与GET方法类似，只是不返回报文主体，一般用于验证URI是否有效。
+	DELETE：删除文件，与PUT方法相反，删除对应URI位置的文件。
+	OPTIONS：查询相应URI支持的HTTP方法。
 
 get和post的区别：
-1、get是从服务器上获取数据  post是向服务器传送数据
-2、get传送的数据量小（不能超过2kb）post传送数据量大，一般不受限制
-3、get因为传送数据在URL上，所以安全性低  post安全性高
-4、get所传送的中文字符会乱码  post支持中文字符
+
+	1、get是从服务器上获取数据  post是向服务器传送数据
+	2、get传送的数据量小（不能超过2kb）post传送数据量大，一般不受限制
+	3、get因为传送数据在URL上，所以安全性低  post安全性高
+	4、get所传送的中文字符会乱码  post支持中文字符
 
 http和https区别：
-1、https有ca证书，http一般没有
-2、http是超文本传输协议，信息是明文传输。https则是具有安全性的ssl加密传输协议
-3、http默认80端口，https默认443端口。
+
+	1、https有ca证书，http一般没有
+	2、http是超文本传输协议，信息是明文传输。https则是具有安全性的ssl加密传输协议
+	3、http默认80端口，https默认443端口。
 
 http常见状态码
-200：成功
-302：重定向
-404：请求失败，请求希望得到的资源违背在服务器发现。（只要不是新手写的demo，一般404都是你路径写错了，或者未区分大小写啥的）
-502：无效的响应（基本上就是Tomcat没启好）
-400：请求没有进入到后台服务里（一般都是前端的锅）
+
+	200：成功
+	302：重定向
+	404：请求失败，请求希望得到的资源违背在服务器发现。（只要不是新手写的demo，一般404都是你路径写错了，或者未区分大小写啥的）
+	502：无效的响应（基本上就是Tomcat没启好）
+	400：请求没有进入到后台服务里（一般都是前端的锅）
 
 css3动画：
 @keyframes 定义动画
 animation：将定义的动画绑定到属性上去
 
 flex
-display:flex
-flex-direction: row | row-reverse | column | column-reverse;(主轴的方向)
-flex-wrap:nowrap | wrap | wrap-reverse(如果一条轴线排不下，如何换行)
-flex-flow: flex-direction属性和flex-wrap属性的简写形式
-justify-content:flex-start | flex-end | center | space-between | space-around(主轴上的对齐方式)
-align-items: flex-start | flex-end | center | baseline | stretch(交叉轴上如何对齐)
-align-content:flex-start | flex-end | center | space-between | space-around | stretch(多根轴线的对齐方式)
+
+	display:flex
+	flex-direction: row | row-reverse | column | column-reverse;(主轴的方向)
+	flex-wrap:nowrap | wrap | wrap-reverse(如果一条轴线排不下，如何换行)
+	flex-flow: flex-direction属性和flex-wrap属性的简写形式
+	justify-content:flex-start | flex-end | center | space-between | space-around(主轴上的对齐方式)
+	align-items: flex-start | flex-end | center | baseline | stretch(交叉轴上如何对齐)
+	align-content:flex-start | flex-end | center | space-between | space-around | stretch(多根轴线的对齐方式)
 
 
 React
@@ -697,19 +711,23 @@ MVVM是通过数据显示视图，并不是操作节点
 MVVM解决了MVC的中大量的dom操作，使页面渲染性能降低，加载速度慢，影响客户体验的问题
 
 Vue如何实现对象和数组的监听？
-由于object.defineProperty()只能对属性进行数据劫持，而不能对整个对象（数组）进行数据劫持，
-因此Vue框架通过遍历数组和对象，对每一个属性进行劫持，从而达到利用Object.defineProperty()也能对对象和数组（部分方法的操作）进行监听
+
+	由于object.defineProperty()只能对属性进行数据劫持，而不能对整个对象（数组）进行数据劫持，
+	因此Vue框架通过遍历数组和对象，对每一个属性进行劫持，从而达到利用Object.defineProperty()也能对对象和数组（部分方法的操作）进行监听
 
 vue双向绑定原理
-就是利用object.defineProperty()这个方法重新定义对象获取属性值(get)和设置属性值(set)的操作实现的
+
+	就是利用object.defineProperty()这个方法重新定义对象获取属性值(get)和设置属性值(set)的操作实现的
 
 vue的优点
-低耦合：视图可以独立于model变化和修改，view变化model可以不变  model变化view也可以不变
+
+	低耦合：视图可以独立于model变化和修改，view变化model可以不变  model变化view也可以不变
 
 
 虚拟Dom的优缺点
-优点：无需手动操作dom，框架根据虚拟dom和数据双向绑定，帮我们更新视图，提高开发效率
-缺点：无法进行极致优化性能，因为它的dom操作需要普遍适用
+
+	优点：无需手动操作dom，框架根据虚拟dom和数据双向绑定，帮我们更新视图，提高开发效率
+	缺点：无法进行极致优化性能，因为它的dom操作需要普遍适用
 
 为什么v-if和v-for不建议一起使用
 v-for的优先级要高于v-if,会把v-if给每一个元素添加上，重复运行于每一个v-for循环中，会造成性能浪费
@@ -807,18 +825,3 @@ v-if绑定值在true或false切换时会销毁和重新渲染其条件块；v-sh
 4.利用v-once处理只会渲染一次的元素或组件
 
 $attrs和$listeners（https://blog.csdn.net/songxiugongwang/article/details/84001967）
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
