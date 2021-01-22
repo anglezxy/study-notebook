@@ -23,6 +23,15 @@
     4.高效性
  ## 7.vue为什么要求组件模板只能由一个根元素
  ## 8.谈一谈你对MVC MVP 和MVVM的理解？
+     MVC:
+        view层传送指令给controller层，controller层完成业务操作，把结果给到modal层，modal层
+    MVVM:
+       view
+       modal
+       viewModal:作为桥梁负责View和modal
+       在MVVM架构下，View 和 Model 之间并没有直接的联系，而是通过ViewModel进行交互，Model 和 ViewModel 之间的交互是双向的， 因此View 数据的变化会同步到Model中，而Model 数据的变化也会立即反应到View 上。
+       ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而View 和 Model 之间的同步工作完全是自动的，无需人为干涉，因此开发者只需关注业务逻辑，不需要手动操作DOM, 不需要关注数据状态的同步问题，复杂的数据状态维护完全由 MVVM 来统一管理
+       
  ## 9.vue中组件通信方式？
     1.父子组件
     2.兄弟组件
@@ -58,6 +67,10 @@
  ## 14.nextTick的原理：
     1.
 ## 15.vue双向数据绑定的原理？
+     采用数据劫持结合发布者和订阅者方式，通过object.defineProperty()来劫持各个属性的setter/getter,在数据变动的时候发布消息给订阅者，触发相应的监听回调，
+     1.实现一个数据监听器Observer,能够对数据对象的所有属性进行监听，如有变动可拿到最新值并通知订阅者
+     2.实现一个指令解析器compiler,对每一个元素节点的指令进行扫描和鸡西，根据指令模板替换数据，以及绑定响应的更新行数
+     3.实现一个watcher,作为连接Observer和compiler的桥梁，能够订阅并收集到每个属性变动的通知，执行指令绑定相应回调函数，从而更新视图
 ## 16.Vue中vue-router中的导航钩子有哪些？
     1.全局导航钩子
         beforeEach(to,from,next)
@@ -120,4 +133,9 @@
     3.怎么去做依赖收集/数据更新
     4.object/array
 
-    object.defineProperty
+    object.defineProperty 
+    在 new Vue() 后， Vue 会调用_init 函数进行初始化，也就是init 过程，在 这个过程Data通过Observer转换成了getter/setter的形式，来对数据追踪变化，当被设置的对象被读取的时候会执行getter 函    数，而在当被赋值的时候会执行 setter函数。
+    当外界通过Watcher读取数据时，会触发getter从而将Watcher添加到依赖中。
+    在修改对象的值的时候，会触发对应的setter， setter通知之前依赖收集得到的 Dep 中的每一个 Watcher，告诉它们自己的值改变了，需要重新渲染视图。这时候这些 Watcher就会开始调用 update 来更新视图。
+    
+    
