@@ -157,6 +157,7 @@
     5.DNS预解析
 ## vue页面优化？
 Vue-router优化：
+
     1.路由懒加载
     2.http链接优化
     3.减少HTTP请求
@@ -167,6 +168,7 @@ Vue-router优化：
     6.图片懒加载
     5.组件优化
  代码优化：
+ 
     1.去除不必要的引入、按需加载插件包
     2.v-if v-show合理使用
     3.style中尽量使用scoped
@@ -174,13 +176,19 @@ Vue-router优化：
     5.提取公共方法，放在util里
  打包优化：
     打包时不打包vue vuex vue-router axios等，换成直接引入(再webpack中配置不需要打包的库)  
-    webpack打包优化：大小、速度
-    1.使用commonsChunk单独打包第三方库
-    2.优化load配置
-        排除node_modules文件，缩小loader加载搜索范围 
-    3.缓存loader执行结果 
-    4.resolve配置
-        1.优化模块查找路径
+    
+        webpack打包优化：
+        1.压缩代码。删除多余的代码、注释、简化代码的写法等等方式。可以利用webpack的UglifyJsPlugin和ParallelUglifyPlugin来压缩JS文件， 利用cssnano（css-loader?minimize）来压缩css
+        2.利用CDN加速。在构建过程中，将引用的静态资源路径修改为CDN上对应的路径。可以利用webpack对于output参数和各loader的publicPath参数来修改资源路径
+        3.删除死代码（Tree Shaking）。将代码中永远不会走到的片段删除掉。可以通过在启动webpack时追加参数--optimize-minimize来实现
+        4.提取公共代码。
+    webpack构建速度：
+        1.多入口情况下，使用CommonsChunkPlugin来提取公共代码
+        2.通过externals配置来提取常用库
+        3.利用DllPlugin和DllReferencePlugin预编译资源模块 通过DllPlugin来对那些我们引用但是绝对不会修改的npm包来进行预编译，再通过DllReferencePlugin将预编译的模块加载进来。
+        4.使用Happypack 实现多线程加速编译
+        5.使用webpack-uglify-parallel来提升uglifyPlugin的压缩速度。 原理上webpack-uglify-parallel采用了多核并行压缩来提升压缩速度
+        6.使用Tree-shaking和Scope Hoisting来剔除多余代码
                   
 
 ## 前端常见兼容性问题？
