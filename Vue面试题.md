@@ -137,5 +137,56 @@
     在 new Vue() 后， Vue 会调用_init 函数进行初始化，也就是init 过程，在 这个过程Data通过Observer转换成了getter/setter的形式，来对数据追踪变化，当被设置的对象被读取的时候会执行getter 函    数，而在当被赋值的时候会执行 setter函数。
     当外界通过Watcher读取数据时，会触发getter从而将Watcher添加到依赖中。
     在修改对象的值的时候，会触发对应的setter， setter通知之前依赖收集得到的 Dep 中的每一个 Watcher，告诉它们自己的值改变了，需要重新渲染视图。这时候这些 Watcher就会开始调用 update 来更新视图。
-    
+ 
+ ## 前端优化？
+    1.资源压缩合并，减少http请求
+          合并图片 css和js合并、css和js文件压缩
+          图片较多的页面可以使用lazyLoad 
+    2.非核心代码异步加载
+        动态脚本加载
+        defer(异步方式加载)
+            在HTML解析完之后才会执行。如果是多个，则按照加载的顺序依次执行。
+        async(html5新特性 异步加载)
+            在加载完之后立即执行。如果是多个，执行顺序和加载顺序无关。
+    3.利用浏览器缓存
+        资源文件（比如图片）在本地存有副本，浏览器下次请求的时候，可能直接从本地磁盘里读取，而不会重新请求图片的url。
+        1.强缓存
+            不用请求服务器，直接使用本地缓存。它是利用http响应头中的Expire或Cache-Control实现的。
+        2.协商缓存
+    4.使用CDN
+    5.DNS预解析
+## vue页面优化？
+Vue-router优化：
+    1.路由懒加载
+    2.http链接优化
+    3.减少HTTP请求
+        合并css js图片。将css js 图片合并，可以减少http请求数
+        合理规划api,可以合并的接口请求合并
+    4.合理使用缓存
+    5.使用字体图标
+    6.图片懒加载
+    5.组件优化
+ 代码优化：
+    1.去除不必要的引入、按需加载插件包
+    2.v-if v-show合理使用
+    3.style中尽量使用scoped
+    4.style尽量抽象，提高复用率，减小css文件
+    5.提取公共方法，放在util里
+ 打包优化：
+    打包时不打包vue vuex vue-router axios等，换成直接引入(再webpack中配置不需要打包的库)  
+    webpack打包优化：大小、速度
+    1.使用commonsChunk单独打包第三方库
+    2.优化load配置
+        排除node_modules文件，缩小loader加载搜索范围 
+    3.缓存loader执行结果 
+    4.resolve配置
+        1.优化模块查找路径
+                  
+
+## 前端常见兼容性问题？
+    1.不同浏览器margin和padding不同
+        css * {margin:0;padding: 0}
+    2.图片默认有间距
+        使用float为img布局      
+   
     
