@@ -2,7 +2,6 @@
     function toTree(list) {
         let tree = []
         let map = list.reduce((res,v) => (res[v.id] = v,res),{})
-        console.log(map, '-----')
        for (const item of list) {
            if (item.parentId ===0) {
                tree.push(item)
@@ -21,10 +20,16 @@
         tree.forEach (item => {
             console.log(`%c${item.name}`,`padding-left: ${ level * 12}px`)
             if (item.children) {
-                print(item.children)
+                print(item.children,level)
             }
         })
         level --
     }
-    
+let list = [
+    {id: 1,name: 'A',parentId: 0},
+    { id: 2,name: 'B',parentId:1},
+]
+    let tree = toTree(list)
+    print(tree,-1)
+
 </script>
