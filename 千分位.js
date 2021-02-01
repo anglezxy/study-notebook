@@ -33,11 +33,12 @@
             let newMap = []
             for (let i=length-1;i >=0; i--) {
                 if ((i+ 1) % 3 ==0) {
-                    newMap.push(arr[i] + ',')
+                    newMap.push(',' + arr[i] )
                 } else {
                     newMap.push(arr[i])
                 }  
             }
+            console.log(newMap)
             let newStr = ''
             for (let i = newMap.length-1;i>=0;i--) {
                 newStr = newStr + newMap[i] 
@@ -69,3 +70,7 @@
    }
 
 </script>
+
+
+
+
